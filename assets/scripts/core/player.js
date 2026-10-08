@@ -4792,7 +4792,9 @@ if (this.p.isFlying || this.p.isUfo) {
           }
         } else if (_colType === hazardType) {
           if (window.noClip) {
-            this.p.diedThisFrame = true; 
+			if (window.noClipAccuracy) {
+              this.p.diedThisFrame = true;
+			}
             continue;
           }
           if (_hasCircleHitbox) {
@@ -4812,8 +4814,12 @@ if (this.p.isFlying || this.p.isUfo) {
             gameObj, pieceWidth, playersY, playersLastY, left, right, top, bottom, playerSize, waveHitSize, gamemodeAddition
           );
           if (slopeResult.died) {
-            this.killPlayer();
-            return;
+			if (!window.noClip) {
+              this.killPlayer();
+              return;
+			} else if (window.noClipAccuracy) {
+			  this.p.diedThisFrame = true;
+			}
           }
           if (slopeResult.landed && slopeResult.candidate) {
             const cand = slopeResult.candidate;
@@ -4854,7 +4860,9 @@ if (this.p.isFlying || this.p.isUfo) {
             : _0x146a97 >= bottom - playerSize);
           if (iscolliding && !isstandingOnAPlatform && !_slopeLeadIn) {
             if (window.noClip) {
-
+              if (window.noClipAccuracy) {
+			    this.p.diedThisFrame = true;
+			  }
               continue;
             }
             if (this.breakabletheblock(gameObj)) {

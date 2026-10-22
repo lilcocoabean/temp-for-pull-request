@@ -1,4 +1,4 @@
-THIS IS AN EDITEED VERSION OF WEB DASHERS
+THIS IS AN EDITED VERSION OF WEB DASHERS
 TEST IT AT https://lilcocoabean.github.io/temp-for-pull-request/
 
 
